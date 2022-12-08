@@ -21,13 +21,13 @@ node('jenkins-slave') {
 
     stage('Build image') {
       sh(script: """
-      docker build --network host -t gopost --build-arg git_branch=${BRANCH} --build-arg git_date=${BUILDDATE} --build-arg git_commit=${COMMITID} .
+      docker build --network host -t mark-nodejs-1 --build-arg git_branch=${BRANCH} --build-arg git_date=${BUILDDATE} --build-arg git_commit=${COMMITID} .
       """)
     }
 
     stage('Tag image') {
       sh(script: """
-      docker tag devops-101:latest 473702960913.dkr.ecr.us-west-2.amazonaws.com/devops-101:v${VERSION}.${env.BUILD_ID}
+      docker tag mark-nodejs-1:latest 473702960913.dkr.ecr.us-west-2.amazonaws.com/devops-101:v${VERSION}.${env.BUILD_ID}
       """)
     }
 
