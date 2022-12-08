@@ -27,7 +27,7 @@ node('jenkins-slave') {
 
     stage('Tag image') {
       sh(script: """
-      docker tag gopost:latest 473702960913.dkr.ecr.us-west-2.amazonaws.com/devops-101:v${VERSION}.${env.BUILD_ID}
+      docker tag devops-101:latest 473702960913.dkr.ecr.us-west-2.amazonaws.com/devops-101:v${VERSION}.${env.BUILD_ID}
       """)
     }
 
