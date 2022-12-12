@@ -27,13 +27,13 @@ node('jenkins-slave') {
 
     stage('Tag image') {
       sh(script: """
-      docker tag mark-nodejs-1:latest 473702960913.dkr.ecr.us-west-2.amazonaws.com/devops-101:v${VERSION}.${env.BUILD_ID}
+      docker tag mark-nodejs-1:latest 473702960913.dkr.ecr.us-west-2.amazonaws.com/devops101-mark:v${VERSION}.${env.BUILD_ID}
       """)
     }
 
     stage('Push image to ECR') {
       sh(script: """
-      docker push 473702960913.dkr.ecr.us-west-2.amazonaws.com/devops-101:v${VERSION}.${env.BUILD_ID}
+      docker push 473702960913.dkr.ecr.us-west-2.amazonaws.com/devops101-mark:v${VERSION}.${env.BUILD_ID}
       """)
     }
   }
